@@ -30,13 +30,12 @@ app.post('/', function (req, res) {
     sniffr.sniff(req.headers['user-agent']);
     console.log(req.headers['user-agent']);
     
-    let url2 = 'https://api.openweathermap.org/data/2.5/weather?q=' + geo.city + '&units=imperial&appid=6dde3692bc68b2c685b0f6ceefa280ff';
-    
     
     request(url, function (err, response, body) {
         if (err) {
             res.render('index', { weather: null, error: 'Error, please try again' });
         } else {
+
             let weather = JSON.parse(body);
             //console.log(weather);
             if (weather.main == undefined) {
@@ -47,14 +46,47 @@ app.post('/', function (req, res) {
                 let degree = weather.main.temp;
                 let city = weather.name;
         
-                let weatherText = "The temp of the city you asked " + degree + " in F " ; 
+                let weatherText = "The temp of the city you asked " + degree + " in F " + city +" Your IP address is : " + ipp + " Your location is :  " + (geo.city) + ", " +(geo.country) + " \n OS : " + (sniffr.os.name) + "OS version : " + (sniffr.os.version) + "  Browser :  " + (sniffr.browser.name) + "   Browser Version :  " + (sniffr.browser.version) +
+                    " Device : " + (sniffr.device.name);
 
-                let temp1 = " Your IP address is : " + ipp + "\n OS : " + (sniffr.os.name) + "OS version : " + (sniffr.os.version) + "  Browser :  " + (sniffr.browser.name) + "   Browser Version :  " + (sniffr.browser.version) +
+                let temp1 = "The temp of the city you asked " + degree + " in F " + city + " Your IP address is : " + ipp + "\n OS : " + (sniffr.os.name) + "OS version : " + (sniffr.os.version) + "  Browser :  " + (sniffr.browser.name) + "   Browser Version :  " + (sniffr.browser.version) +
                     " Device : " + (sniffr.device.name);
             
-                res.render('index', {weather: weatherText ,temp1: temp1, error: null});
+                // res.render('index', {weather: weatherText ,temp1: temp1, error: null});
              
                 //res.render('index', {weather: sniffer, error: null});
+
+                let url2 = 'https://api.openweathermap.org/data/2.5/weather?q=' + geo.city + '&units=imperial&appid=6dde3692bc68b2c685b0f6ceefa280ff';
+
+                request(url2, function (err, response, body) {
+                    if (err) {
+                        res.render('index', { weather: null, error: 'Error, please try again' });
+                    } else {
+
+                        let weather = JSON.parse(body);
+                        //console.log(weather);
+                        if (weather.main == undefined) {
+                            res.render('index', { weather: null, error: 'Error, please try again' });
+                        } else {
+                            console.log(ipp);
+                            console.log(sniffr);
+                            let degree = weather.main.temp;
+                            let city = weather.name;
+
+                            let weatherText1 = "The temp of the city you asked " + degree + " in F " + geo.city;
+
+                            res.render('index', {
+                                weather: weatherText,
+                                temp1: temp1,
+                                weatherText1:weatherText1,
+                                error: null,
+                            });
+
+                            //res.render('index', {weather: sniffer, error: null});
+
+                        }
+                    }
+                });
 
             }
         } 
