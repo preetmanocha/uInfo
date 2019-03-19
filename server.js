@@ -22,10 +22,10 @@ let url = 'https://api.openweathermap.org/data/2.5/weather?q='+city+'&units=impe
         req.connection.remoteAddress ||
         req.socket.remoteAddress ||
         req.connection.socket.remoteAddress;
-    
-    console.log('req.ip: ',req.ip);
-    console.log('ipp: ',ipp);
-    console.log("city");
+    var geo = geoip.lookup(ip);
+    // console.log('req.ip: ',req.ip);
+    // console.log('ipp: ',ipp);
+    // console.log("city");
     request(url, function (err, response, body) {
         if (err) {
             res.render('index', {weather: null,error: 'Error, please try again'});
@@ -38,7 +38,7 @@ let url = 'https://api.openweathermap.org/data/2.5/weather?q='+city+'&units=impe
                     console.log(weather.main.temp);
                     let degree = weather.main.temp
                     let city = weather.name
-                    let weatherText = "The temp is " + degree + " in " +city+ " and the ip is " +req.ip+ ipp ;
+                    let weatherText = "The temp is " + degree + " in " +city+ " and the ip is " + ipp " and location is " + geo ;
                     res.render('index', {weather: weatherText,error: null});
                 }
             }
