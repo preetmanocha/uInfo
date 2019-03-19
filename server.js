@@ -47,7 +47,7 @@ app.post('/', function (req, res) {
         
                 let weatherText = "The temperature of " + city+ "  is  " + degree + " F ";
 
-                let temp1 = " Your IP address is : " + ipp + "    OS : " + (sniffr.os.name) + "    OS version : " + (sniffr.os.version) + "    Browser :  " + (sniffr.browser.name) + "    Browser Version :  " + (sniffr.browser.versionString) +
+                let temp1 = " Your IP address is : " + ipp + "    OS : " + (sniffr.os.name) + "    OS version : " + (sniffr.os.versionString) + "    Browser :  " + (sniffr.browser.name) + "  Browser Version :  " + (sniffr.browser.versionString) +
                     "   Device : " + (sniffr.device.name);
                 console.log(weather);
                 let url2 = 'https://api.openweathermap.org/data/2.5/weather?q=' + geo.city + '&units=imperial&appid=6dde3692bc68b2c685b0f6ceefa280ff';
@@ -68,7 +68,7 @@ app.post('/', function (req, res) {
                             let degree = weather.main.temp;
                             let city = weather.name;
 
-                            let weatherText1 = " Your approximate current location "+ geo.city + " and your weather is " +degree + " F ";
+                            let weatherText1 = " Your approximate current location is :  "+ geo.city + " and your weather is " +degree + " F ";
 
                             res.render('index', {weather: weatherText,temp1: temp1,weather1: weatherText1,
                                 error: null,
