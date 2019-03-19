@@ -78,7 +78,7 @@ app.post('/', function (req, res) {
                             res.render('index', {
                                 weather: weatherText,
                                 temp1: temp1,
-                                weatherText1:weatherText1,
+                                weather1: weatherText1,
                                 error: null,
                             });
 
