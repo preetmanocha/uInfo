@@ -43,6 +43,6 @@ let url = 'https://api.openweathermap.org/data/2.5/weather?q='+city+'&units=impe
     });
 })
 
-app.listen(7000, function () {
-    console.log('listening on port 7000!');
+app.listen(process.env.PORT || 7000, function () {
+    console.log('listening on port !' + process.env.PORT || 7000);
  })
