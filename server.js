@@ -3,9 +3,9 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const request = require('request');
-var geoip = require('geoip-lite');
-var Sniffr = require("sniffr");
-var s = new Sniffr();
+const geoip = require('geoip-lite');
+const Sniffr = require("sniffr");
+
 
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
@@ -24,6 +24,8 @@ let url = 'https://api.openweathermap.org/data/2.5/weather?q='+city+'&units=impe
         req.socket.remoteAddress ||
         req.connection.socket.remoteAddress;
     var geo = geoip.lookup(ipp);
+    var s = new Sniffr();
+    
     // console.log('req.ip: ',req.ip);
     // console.log('ipp: ',ipp);
     // console.log("city");
