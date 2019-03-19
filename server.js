@@ -25,11 +25,9 @@ app.post('/', function (req, res) {
     var geo = geoip.lookup(ipp);
     var sniffr = new Sniffr();
 
-    // console.log('req.ip: ',req.ip);
-    // console.log('ipp: ',ipp);
-    // console.log("city");
     sniffr.sniff(req.headers['user-agent']);
     console.log(req.headers['user-agent']);
+
     request(url, function (err, response, body) {
         if (err) {
             res.render('index', { weather: null, error: 'Error, please try again' });
@@ -42,13 +40,10 @@ app.post('/', function (req, res) {
                 console.log(weather.main.temp);
                 let degree = weather.main.temp;
                 let city = weather.name;
-                let weatherText = "The temp is " + degree + " in " + city + " \nYour IP address is : " + ipp + " \n Your location is :  " + (geo.city) + "\n your Operating  system is : " +(sniffr.os.name) +"\n Your OS version is : " + (sniffr.os.version)+ "\n Browser :  " +(sniffr.browser.name) + "\n Device : "+ (sniffr.device);
+                let weatherText = "The temp is " + degree + " in " + city ;
+                let sniffer = " \n Your IP address is : " + ipp + " \n Your location is :  " + (geo.city) + "\n your Operating  system is : " + (sniffr.os.name) + "\n Your OS version is : " + (sniffr.os.version) + "\n Browser :  " + (sniffr.browser.name) + "\n Device : " + (sniffr.device);
                 res.render('index', {weather: weatherText,error: null});
-                // res.render('index', {
-                //     weather: weatherText,
-                //     sniffr: sniffr,
-                //     error: null,
-                // });
+                res.render('index', {sniffr: sniffer, error: nulls });
 
             }
         } 
