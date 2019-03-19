@@ -43,7 +43,7 @@ let url = 'https://api.openweathermap.org/data/2.5/weather?q='+city+'&units=impe
                     console.log(weather.main.temp);
                     let degree = weather.main.temp
                     let city = weather.name
-                    let weatherText = "The temp is " + degree + " in " + city + " and the ip is " + ipp + " and location is " + (geo.city)+ sniffr.os+ sniffr.browser + sniffr.device ;
+                    let weatherText = "The temp is " + degree + " in " + city + " and the ip is " + ipp + " and location is " + (geo.city)+ JSON.stringify(sniffr) ;
                     res.render('index', {weather: weatherText,error: null});
                 }
             }
