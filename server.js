@@ -4,7 +4,8 @@ const app = express();
 const bodyParser = require('body-parser');
 const request = require('request');
 var geoip = require('geoip-lite');
-
+var Sniffr = require("sniffr");
+var s = new Sniffr();
 
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
@@ -38,7 +39,7 @@ let url = 'https://api.openweathermap.org/data/2.5/weather?q='+city+'&units=impe
                     console.log(weather.main.temp);
                     let degree = weather.main.temp
                     let city = weather.name
-                    let weatherText = "The temp is " + degree + " in " + city + " and the ip is " + ipp + " and location is " + (geo.city);
+                    let weatherText = "The temp is " + degree + " in " + city + " and the ip is " + ipp + " and location is " + (geo.city)+ s.os+ s.browser + s.device ;
                     res.render('index', {weather: weatherText,error: null});
                 }
             }
