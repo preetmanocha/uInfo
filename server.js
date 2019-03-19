@@ -33,12 +33,12 @@ app.post('/', function (req, res) {
             res.render('index', { weather: null, error: 'Error, please try again' });
         } else {
             let weather = JSON.parse(body);
-            console.log(weather);
+            //console.log(weather);
             if (weather.main == undefined) {
                 res.render('index', { weather: null, error: 'Error, please try again' });
             } else {
-                //console.log(weather.main.temp);
-                console.log(sniffr)
+                console.log(ipp);
+                console.log(sniffr);
                 let degree = weather.main.temp;
                 let city = weather.name;
                 let weatherText = "The temp is " + degree + " in " + city +" Your IP address is : " + ipp + " Your location is :  " + (geo.city) + (geo.country) + " OS : " + (sniffr.os.name) + "OS version : " + (sniffr.os.version) + "Browser :  " + (sniffr.browser.name) + "Browser Version :  " + (sniffr.browser.version) +
