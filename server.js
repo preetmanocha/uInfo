@@ -41,10 +41,10 @@ app.post('/', function (req, res) {
                 let degree = weather.main.temp;
                 let city = weather.name;
                 let weatherText = "The temp is " + degree + " in " + city ;
-                let sniffer = " \n Your IP address is : " + ipp + " \n Your location is :  " + (geo.city) + "\n your Operating  system is : " + (sniffr.os.name) + "\n Your OS version is : " + (sniffr.os.version) + "\n Browser :  " + (sniffr.browser.name) + "\n Device : " + (sniffr.device);
+                let sniffer = " Your IP address is : " + ipp + " Your location is :  " + (geo.city) + " OS : " + (sniffr.os.name) + "OS version : " + (sniffr.os.version) + "Browser :  " + (sniffr.browser.name) + "\n Device : " + (sniffr.device);
                 res.render('index', {weather: weatherText,error: null});
                 console.log(sniffr);
-                res.render('index', {sniffr: sniffer, error: null});
+                res.render('index', {weather: sniffer, error: null});
 
             }
         } 
