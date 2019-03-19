@@ -70,7 +70,7 @@ app.post('/', function (req, res) {
                             let degree = weather.main.temp;
                             let city = weather.name;
 
-                            let weatherText1 = "The temp of your curent location" + degree + " in F " + geo.city;
+                            let weatherText1 = "Your approximate current location "+ geo.city + " and your weather is " +degree + " in F ";
 
                             res.render('index', {
                                 weather: weatherText,
