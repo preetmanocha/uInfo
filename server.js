@@ -43,7 +43,8 @@ app.post('/', function (req, res) {
                 let weatherText = "The temp is " + degree + " in " + city ;
                 let sniffer = " \n Your IP address is : " + ipp + " \n Your location is :  " + (geo.city) + "\n your Operating  system is : " + (sniffr.os.name) + "\n Your OS version is : " + (sniffr.os.version) + "\n Browser :  " + (sniffr.browser.name) + "\n Device : " + (sniffr.device);
                 res.render('index', {weather: weatherText,error: null});
-                res.render('index', {sniffr: sniffer, error: nulls });
+                console.log(sniffr);
+                res.render('index', {sniffr: sniffer, error: null});
 
             }
         } 
