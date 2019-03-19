@@ -22,7 +22,9 @@ let url = 'https://api.openweathermap.org/data/2.5/weather?q='+city+'&units=impe
         req.connection.remoteAddress ||
         req.socket.remoteAddress ||
         req.connection.socket.remoteAddress;
-        
+    
+    console.log('req.ip: ',req.ip);
+    console.log('ipp: ',ipp);
     console.log("city");
     request(url, function (err, response, body) {
         if (err) {
