@@ -18,7 +18,11 @@
             <% if(locals.weather !== null){ %>
             <p><%=locals.weather %></p>
             <% } %>
-            
+
+            <% if(locals.temp1 !== null){ %>
+            <p><%=locals.temp1 %></p>
+            <% } %>
+
             <% if(locals.error !== null){ %>
             <p><%= locals.error %></p>
             <% } %>
