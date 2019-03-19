@@ -47,10 +47,9 @@ app.post('/', function (req, res) {
                 let degree = weather.main.temp;
                 let city = weather.name;
         
-                let weatherText = "The temp of the city you asked " + degree + " in F " + city +" Your IP address is : " + ipp + " Your location is :  " + (geo.city) + ", " +(geo.country) + "  Weather of your city:  "+ url2 + " \n OS : " + (sniffr.os.name) + "OS version : " + (sniffr.os.version) + "  Browser :  " + (sniffr.browser.name) + "   Browser Version :  " + (sniffr.browser.version) +
-                    " Device : " + (sniffr.device.name);
+                let weatherText = "The temp of the city you asked " + degree + " in F " ; 
 
-                let temp1 = "The temp of the city you asked " + degree + " in F " + city + " Your IP address is : " + ipp + "\n OS : " + (sniffr.os.name) + "OS version : " + (sniffr.os.version) + "  Browser :  " + (sniffr.browser.name) + "   Browser Version :  " + (sniffr.browser.version) +
+                let temp1 = " Your IP address is : " + ipp + "\n OS : " + (sniffr.os.name) + "OS version : " + (sniffr.os.version) + "  Browser :  " + (sniffr.browser.name) + "   Browser Version :  " + (sniffr.browser.version) +
                     " Device : " + (sniffr.device.name);
             
                 res.render('index', {weather: weatherText ,temp1: temp1, error: null});
