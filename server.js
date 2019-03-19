@@ -17,7 +17,7 @@ app.get('/', function (req, res) {
 
 app.post('/', function (req, res) {
     let city = req.body.city;
-    let url = 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&units=imperial&appid=6dde3692bc68b2c685b0f6ceefa280ff'
+    let url = 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&units=imperial&appid=6dde3692bc68b2c685b0f6ceefa280ff';
     var ipp = (req.headers['x-forwarded-for'] || '').split(',').pop() ||
         req.connection.remoteAddress ||
         req.socket.remoteAddress ||
@@ -40,9 +40,9 @@ app.post('/', function (req, res) {
                 res.render('index', { weather: null, error: 'Error, please try again' });
             } else {
                 console.log(weather.main.temp);
-                let degree = weather.main.temp
-                let city = weather.name
-                let weatherText = "The temp is " + degree + " in " + city + " and the ip is " + ipp + " and location is " + JSON.stringify(geo.city) + JSON.stringify(sniffr.os.name) + JSON.stringify(sniffr.os.version)+  JSON.stringify(sniffr.browser.name) + JSON.stringify(sniffr.device);
+                let degree = weather.main.temp;
+                let city = weather.name;
+                let weatherText = "The temp is " + degree + " in " + city + " and the ip is " + ipp + " and location is " + (geo.city) + (sniffr.os.name) + (sniffr.os.version)+  (sniffr.browser.name) + (sniffr.device);
                 // res.render('index', {weather: weatherText,error: null});
                 // res.render('index', {
                 //     weather: weatherText,
@@ -53,8 +53,8 @@ app.post('/', function (req, res) {
             }
         }
     });
-})
+});
 
 app.listen(process.env.PORT || 7000, function () {
     console.log('listening on port !' + process.env.PORT || 7000);
-})
+});
