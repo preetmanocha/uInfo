@@ -47,7 +47,7 @@ app.post('/', function (req, res) {
         
                 let weatherText = "The temperature of " + city+ "  is  " + degree + " F ";
 
-                let temp1 = " Your IP address is : " + ipp + " OS : " + (sniffr.os.name) + " OS version : " + (sniffr.os.version) + "    Browser :  " + (sniffr.browser.name) + "    Browser Version :  " + (sniffr.browser.version) +
+                let temp1 = " Your IP address is : " + ipp + "    OS : " + (sniffr.os.name) + "    OS version : " + (sniffr.os.version) + "    Browser :  " + (sniffr.browser.name) + "    Browser Version :  " + (sniffr.browser.versionString) +
                     "   Device : " + (sniffr.device.name);
                 console.log(weather);
                 let url2 = 'https://api.openweathermap.org/data/2.5/weather?q=' + geo.city + '&units=imperial&appid=6dde3692bc68b2c685b0f6ceefa280ff';
