@@ -42,7 +42,7 @@ app.post('/', function (req, res) {
                 console.log(weather.main.temp);
                 let degree = weather.main.temp;
                 let city = weather.name;
-                let weatherText = "The temp is " + degree + " in " + city + " and the ip is " + ipp + " and location is " + (geo.city) + (sniffr.os.name) + (sniffr.os.version)+  (sniffr.browser.name) + (sniffr.device);
+                let weatherText = "The temp is " + degree + " in " + city + " \nYour IP address is : " + ipp + " \n Your location is :  " + (geo.city) + "\n your Operating  system is : " +(sniffr.os.name) +"\n Your OS version is : " + (sniffr.os.version)+ "\n Browser :  " +(sniffr.browser.name) + "\n Device : "+ (sniffr.device);
                 res.render('index', {weather: weatherText,error: null});
                 // res.render('index', {
                 //     weather: weatherText,
@@ -51,7 +51,7 @@ app.post('/', function (req, res) {
                 // });
 
             }
-        }
+        } 
     });
 });
 
