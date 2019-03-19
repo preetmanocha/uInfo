@@ -40,8 +40,7 @@ app.post('/', function (req, res) {
             if (weather.main == undefined) {
                 res.render('index', { weather: null, error: 'Error, please try again' });
             } else {
-                console.log(req.ip);
-                console.log(sniffr);
+                
                 let degree = weather.main.temp;
                 let city = weather.name;
         
@@ -62,8 +61,10 @@ app.post('/', function (req, res) {
                         if (weather.main == undefined) {
                             res.render('index', { weather: null, error: 'Error, please try again' });
                         } else {
+                            console.log(req.ip);
                             console.log(ipp);
                             console.log(sniffr);
+                            console.log(geo.city);
                             
                             let degree = weather.main.temp;
                             let city = weather.name;
