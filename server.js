@@ -2,6 +2,8 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const request = require('request');
+
+//
 const geoip = require('geoip-lite');
 const Sniffr = require("sniffr");
 
@@ -46,12 +48,10 @@ app.post('/', function (req, res) {
                 let degree = weather.main.temp;
                 let city = weather.name;
         
-                let weatherText = "The temp of the city you asked " + degree + " in F ";
+                let weatherText = "The temperature of " + city+ " you are searching for " + degree + " F ";
 
-                let temp1 = " Your IP address is : " + ipp + "\n OS : " + (sniffr.os.name) + "OS version : " + (sniffr.os.version) + "  Browser :  " + (sniffr.browser.name) + "   Browser Version :  " + (sniffr.browser.version) +
+                let temp1 = " Your IP address is : " + ipp + " OS : " + (sniffr.os.name) + " OS version : " + (sniffr.os.version) + "  Browser :  " + (sniffr.browser.name) + "   Browser Version :  " + (sniffr.browser.version) +
                     " Device : " + (sniffr.device.name);
-            
-              
 
                 let url2 = 'https://api.openweathermap.org/data/2.5/weather?q=' + geo.city + '&units=imperial&appid=6dde3692bc68b2c685b0f6ceefa280ff';
 
@@ -70,7 +70,7 @@ app.post('/', function (req, res) {
                             let degree = weather.main.temp;
                             let city = weather.name;
 
-                            let weatherText1 = "Your approximate current location "+ geo.city + " and your weather is " +degree + " in F ";
+                            let weatherText1 = " Your approximate current location "+ geo.city + " and your weather is " +degree + " F ";
 
                             res.render('index', {
                                 weather: weatherText,
