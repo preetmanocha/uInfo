@@ -37,14 +37,16 @@ app.post('/', function (req, res) {
             if (weather.main == undefined) {
                 res.render('index', { weather: null, error: 'Error, please try again' });
             } else {
-                console.log(weather.main.temp);
+                //console.log(weather.main.temp);
+                console.log(sniffr)
                 let degree = weather.main.temp;
                 let city = weather.name;
                 let weatherText = "The temp is " + degree + " in " + city ;
-                let sniffer = " Your IP address is : " + ipp + " Your location is :  " + (geo.city) + " OS : " + (sniffr.os.name) + "OS version : " + (sniffr.os.version) + "Browser :  " + (sniffr.browser.name) + "\n Device : " + (sniffr.device);
-                res.render('index', {weather: weatherText,error: null});
-                console.log(sniffr);
-                res.render('index', {weather: sniffer, error: null});
+                let sniffer = " Your IP address is : " + ipp + " Your location is :  " + (geo.city) +(geo.country)+ " OS : " + (sniffr.os.name) + "OS version : " + (sniffr.os.version) + "Browser :  " + (sniffr.browser.name) +"Browser Version :  " + (sniffr.browser.version)
+                "\n Device : " + (sniffr.device.name);
+                res.render('index', {weather: weatherText, sniffr: sniffer ,error: null});
+             
+                //res.render('index', {weather: sniffer, error: null});
 
             }
         } 
