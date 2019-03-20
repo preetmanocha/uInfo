@@ -3,7 +3,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const request = require('request');
 
-//
+//Geo IP
 const geoip = require('geoip-lite');
 const Sniffr = require("sniffr");
 
@@ -69,7 +69,7 @@ app.post('/', function (req, res) {
                             let degree = weather.main.temp;
                             let city = weather.name;
 
-                            let weatherText1 = "***** BUT, Your current location is :  "+ geo.city + " and your weather is " +degree + " F *****";
+                            let weatherText1 = "***** BUTt, Your current location is :  "+ geo.city + " and your weather is " +degree + " F *****";
 
                             res.render('index', {weather: weatherText,temp1: temp1,weather1: weatherText1,
                                 error: null,
