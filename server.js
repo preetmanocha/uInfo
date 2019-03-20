@@ -44,7 +44,7 @@ app.post('/', function (req, res) {
                 let degree = weather.main.temp;
                 let city = weather.name;
         
-                let weatherText = "The temperature of " + city+ "  ***is  " + degree + " F ";
+                let weatherText = "The temperature of " + city+ "  is  " + degree + " F ";
 
                 let temp1 = " ****Your IP address is : " + ipp + "    OS : " + (sniffr.os.name) + "    OS version : " + (sniffr.os.versionString) + "    Browser :  " + (sniffr.browser.name) + "  Browser Version :  " + (sniffr.browser.versionString)  +
                     "   Device : " + (sniffr.device.name) + "******";
