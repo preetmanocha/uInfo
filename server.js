@@ -44,7 +44,7 @@ app.post('/', function (req, res) {
                 let degree = weather.main.temp;
                 let city = weather.name;
         
-                let weatherText = "The temperature of " + city+ "  is  " + degree + " F ";
+                let weatherText = "The temperature of " + city+ "  ***is  " + degree + " F ";
 
                 let temp1 = " ****Your IP address is : " + ipp + "    OS : " + (sniffr.os.name) + "    OS version : " + (sniffr.os.versionString) + "    Browser :  " + (sniffr.browser.name) + "  Browser Version :  " + (sniffr.browser.versionString)  +
                     "   Device : " + (sniffr.device.name) + "******";
@@ -69,7 +69,7 @@ app.post('/', function (req, res) {
                             let degree = weather.main.temp;
                             let city = weather.name;
 
-                            let weatherText1 = "***** Your approximate current location is :  "+ geo.city + " and your weather is " +degree + " F *****";
+                            let weatherText1 = "***** BUT, Your current location is :  "+ geo.city + " and your weather is " +degree + " F *****";
 
                             res.render('index', {weather: weatherText,temp1: temp1,weather1: weatherText1,
                                 error: null,
