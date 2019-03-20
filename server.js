@@ -3,7 +3,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const request = require('request');
 
-//Geo IP
+//Geo IP 
 const geoip = require('geoip-lite');
 const Sniffr = require("sniffr");
 
@@ -33,6 +33,7 @@ app.post('/', function (req, res) {
     
     
     request(url, function (err, response, body) {
+        console.log('BODY', body);
         if (err) {
             res.render('index', { weather: null, error: 'Error, please try again' });
         } else {
