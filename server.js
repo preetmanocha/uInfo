@@ -18,7 +18,10 @@ app.get('/', function (req, res) {
 
 
 app.post('/', function (req, res) {
+    console.log('BODY', req);
+
     let city = req.body.city;
+    
     let url = 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&units=imperial&appid=6dde3692bc68b2c685b0f6ceefa280ff';
 
     var ipp = (req.headers['x-forwarded-for'] || '').split(',').pop() ||
@@ -29,11 +32,11 @@ app.post('/', function (req, res) {
     var sniffr = new Sniffr();
 
     sniffr.sniff(req.headers['user-agent']);
-    //console.log(req.headers['user-agent']);
+    console.log(req.headers['user-agent']);
     
     
     request(url, function (err, response, body) {
-        console.log('BODY', body);
+        
         if (err) {
             res.render('index', { weather: null, error: 'Error, please try again' });
         } else {
