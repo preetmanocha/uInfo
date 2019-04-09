@@ -18,7 +18,7 @@ app.get('/', function (req, res) {
 
 
 app.post('/', function (req, res) {
-    console.log('BODY', req);
+    //console.log('BODY', req);
 
     let city = req.body.city;
     
@@ -31,8 +31,8 @@ app.post('/', function (req, res) {
     var geo = geoip.lookup(ipp);
     var sniffr = new Sniffr();
 
-    sniffr.sniff(req.headers['user-agent']);
-    console.log(req.headers['user-agent']);
+    //sniffr.sniff(req.headers['user-agent']);
+    //console.log(req.headers['user-agent']);
     
     
     request(url, function (err, response, body) {
@@ -52,7 +52,7 @@ app.post('/', function (req, res) {
 
                 let temp1 = " ****Your IP address is : " + ipp + "    OS : " + (sniffr.os.name) + "    OS version : " + (sniffr.os.versionString) + "    Browser :  " + (sniffr.browser.name) + "  Browser Version :  " + (sniffr.browser.versionString)  +
                     "   Device : " + (sniffr.device.name) + "******";
-                console.log(weather);
+                //console.log(weather);
                 let url2 = 'https://api.openweathermap.org/data/2.5/weather?q=' + geo.city + '&units=imperial&appid=6dde3692bc68b2c685b0f6ceefa280ff';
 
                 request(url2, function (err, response, body) {
