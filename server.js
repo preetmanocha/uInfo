@@ -32,7 +32,7 @@ app.post('/', function (req, res) {
     var sniffr = new Sniffr();
 
     //sniffr.sniff(req.headers['user-agent']);
-    //console.log(req.headers['user-agent']);
+    console.log(req.headers['user-agent']);
     
     
     request(url, function (err, response, body) {
