@@ -18,7 +18,7 @@ app.get('/', function (req, res) {
 
 
 app.post('/', function (req, res) {
-    //console.log('BODY', req);
+    console.log('BODY', req);
 
     let city = req.body.city;
     
@@ -34,7 +34,7 @@ app.post('/', function (req, res) {
     //console.log(geo);
     //sniffr.sniff(req.headers['user-agent']);
     //console.log(req.headers['user-agent']);
-    console.log(req.headers);
+    //console.log(req.headers);
     
     request(url, function (err, response, body) {
         
