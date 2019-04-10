@@ -28,12 +28,13 @@ app.post('/', function (req, res) {
         req.connection.remoteAddress ||
         req.socket.remoteAddress ||
         req.connection.socket.remoteAddress;
+    
     var geo = geoip.lookup(ipp);
     var sniffr = new Sniffr();
-
+    //console.log(geo);
     //sniffr.sniff(req.headers['user-agent']);
-    console.log(req.headers['user-agent']);
-    
+    //console.log(req.headers['user-agent']);
+    console.log(req.headers);
     
     request(url, function (err, response, body) {
         
@@ -42,7 +43,7 @@ app.post('/', function (req, res) {
         } else {
             let weather = JSON.parse(body);
             if (weather.main == undefined) {
-                res.render('index', { weather: null, error: 'Error, please try again' });
+                res.render('index', { weather: null, error: 'Error, please Enter correct city name' });
             } else {
                 
                 let degree = weather.main.temp;
@@ -53,7 +54,7 @@ app.post('/', function (req, res) {
                 let temp1 = " ****Your IP address is : " + ipp + "    OS : " + (sniffr.os.name) + "    OS version : " + (sniffr.os.versionString) + "    Browser :  " + (sniffr.browser.name) + "  Browser Version :  " + (sniffr.browser.versionString)  +
                     "   Device : " + (sniffr.device.name) + "******";
                 //console.log(weather);
-                let url2 = 'https://api.openweathermap.org/data/2.5/weather?q=' + geo.city + '&units=imperial&appid=6dde3692bc68b2c685b0f6ceefa280ff';
+                let url2 = 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&units=imperial&appid=6dde3692bc68b2c685b0f6ceefa280ff';
 
                 request(url2, function (err, response, body) {
                     if (err) {
@@ -73,13 +74,13 @@ app.post('/', function (req, res) {
                             let degree = weather.main.temp;
                             let city = weather.name;
 
-                            let weatherText1 = "***** BUTt, Your current location is :  "+ geo.city + " and your weather is " +degree + " F *****";
+                            let weatherText1 = "***** BUTt, Your current location is :  "+ geo + " and your weather is " +degree + " F *****";
 
                             res.render('index', {weather: weatherText,temp1: temp1,weather1: weatherText1,
                                 error: null,
                             });
 
-                            //res.render('index', {weather: sniffer, error: null});
+                    
 
                         }
                     }
